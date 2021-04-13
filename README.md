@@ -105,4 +105,4 @@ Take a ViewController that has a record UIButton, and a global isRecording Bool.
 ## Licence
 STTLibrary is licensed under the MIT License.
 
-### Latest version: 1.0.2
+### Latest version: 1.0.3

@@ -131,9 +131,7 @@ open class SSTLibrary {
 		self.audioEngine.inputNode.removeTap(onBus: 0)
 		self.audioEngine.stop()
 		self.speechRequest.endAudio()
-//		if audioRecorder != nil {
-			audioRecorder.stop()
-//		}
+        audioRecorder.stop()
 	}
 	
 }
@@ -146,14 +144,6 @@ extension SSTLibrary {
 		print(url.path)
 		return url
 	}
-	
-//	var recordLocation: URL {
-//		get {
-//			let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("m4a")
-//			print(url.path)
-//			return url
-//		}
-//	}
 	
 }
 

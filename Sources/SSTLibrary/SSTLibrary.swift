@@ -131,9 +131,9 @@ open class SSTLibrary {
 		self.audioEngine.inputNode.removeTap(onBus: 0)
 		self.audioEngine.stop()
 		self.speechRequest.endAudio()
-		if audioRecorder != nil {
+//		if audioRecorder != nil {
 			audioRecorder.stop()
-		}
+//		}
 	}
 	
 }

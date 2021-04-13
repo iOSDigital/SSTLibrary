@@ -70,6 +70,38 @@ The "sstResult" in the .success block is an SSTResult object.
 sstManager.stopRecording()
 ```
 
+## Real world example
+
+Take a ViewController that has a record UIButton, and a global isRecording Bool.
+
+```swift
+@IBAction func record(_ sender: UIButton) {
+
+    if isRecording {
+        sstManager.stopRecognizing()
+        sender.setTitle("Record", for: .normal)
+    } else {
+        sender.setTitle("Stop", for: .normal)
+        sstManager.startRecognizing { (result) in
+        switch result {
+            case .success(let sstResult):
+                // This is your speech to text result!
+                print(sstResult.string)
+                // The SSTResult contains the SFSpeechRecognitionResult
+                let speechResult = sstResult.speechRecognitionResult
+                let transcriptions = speechResult?.transcriptions
+
+            case .failure(let error):
+                // Something went wrong :(
+                print("Error: \(error)")
+            }
+        }
+    }
+
+    isRecording = !isRecording
+}
+```
+
 ## Licence
 STTLibrary is licensed under the MIT License.
 

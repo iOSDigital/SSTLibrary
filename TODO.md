@@ -1,3 +1,5 @@
-* Add options for advanced use, e.g. returnsPartialResults
-* Convienience init to return SFSpeechRecognitionResult
-* OCWaveView
+## TODO
+
+* Unit testing
+* ~~Add options for advanced use, e.g. returnsPartialResults~~
+* OCWaveView integration

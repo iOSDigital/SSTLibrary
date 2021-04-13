@@ -1,4 +1,5 @@
 # SSTLibrary
+# Simple Speech to Text Library written in pure Swift
 
 ## Overview
 A simple Swift package wrapper for SFSpeechRecognizer. Returns a SSTResult object, which contains .string (the string with the highest confidence level), and .result which is an [SFSpeechRecognitionResult](https://developer.apple.com/documentation/speech/sfspeechrecognitionresult) object, which contains all the possible transcripts, confidence levels etc.

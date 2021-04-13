@@ -34,7 +34,7 @@ Then, once you have imported the module:
 import SSTLibrary
 ```
 
-Init a global (or local if you prefer) instance of the class:
+Init a **global** instance of the class:
 
 ```swift
 let sstManager = SSTLibrary()
@@ -73,4 +73,4 @@ sstManager.stopRecording()
 ## Licence
 STTLibrary is licensed under the MIT License.
 
-### Latest version: 1.0.1
+### Latest version: 1.0.2

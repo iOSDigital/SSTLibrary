@@ -98,7 +98,7 @@ open class SSTLibrary {
 		audioEngine.prepare()
 		do {
 			try audioEngine.start()
-			audioRecorder = try AVAudioRecorder(url: recordLocation, settings: audioSettings)
+			audioRecorder = try AVAudioRecorder(url: recordLocation(), settings: audioSettings)
 			audioRecorder.isMeteringEnabled = true
 			audioRecorder.record()
 			
@@ -141,13 +141,19 @@ open class SSTLibrary {
 
 extension SSTLibrary {
 	
-	var recordLocation: URL {
-		get {
-			let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("m4a")
-			print(url.path)
-			return url
-		}
+	func recordLocation() -> URL {
+		let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("m4a")
+		print(url.path)
+		return url
 	}
+	
+//	var recordLocation: URL {
+//		get {
+//			let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("m4a")
+//			print(url.path)
+//			return url
+//		}
+//	}
 	
 }
 

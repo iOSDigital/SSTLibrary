@@ -72,3 +72,5 @@ sstManager.stopRecording()
 
 ## Licence
 STTLibrary is licensed under the MIT License.
+
+### Latest version: 1.0.1

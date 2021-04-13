@@ -73,7 +73,7 @@ open class SSTLibrary {
 				try? self.audioSession.setCategory(.playAndRecord, mode: .default)
 				try? self.audioSession.setActive(true)
 			}else {
-				print("STTLibrary: Record permission not allowed")
+				print("SSTLibrary: Record permission not allowed")
 			}
 		}
 		#endif
@@ -104,7 +104,7 @@ open class SSTLibrary {
 			
 			speechRecogniser?.recognitionTask(with: speechRequest, resultHandler: { (result, error) in
 				if error != nil {
-					print("STTLibraryError: " + error!.localizedDescription)
+					print("SSTLibraryError: " + error!.localizedDescription)
 					self.stopRecognizing()
 					completion(.failure(.SpeechRecognizerError))
 				} else {
@@ -119,7 +119,7 @@ open class SSTLibrary {
 			})
 			
 		}catch{
-			print("STTLibraryError: \(error.localizedDescription)")
+			print("SSTLibraryError: \(error.localizedDescription)")
 			stopRecognizing()
 			completion(.failure(.AudioEngineError))
 		}

@@ -1,13 +1,13 @@
-# STTLibrary
+# SSTLibrary
 
 ## Overview
-A simple Swift package wrapper for SFSpeechRecognizer. Returns a string.
+A simple Swift package wrapper for SFSpeechRecognizer. Returns a SSTResult object, which contains .string (the string with the highest confidence level), and .result which is an [SFSpeechRecognitionResult](https://developer.apple.com/documentation/speech/sfspeechrecognitionresult) object, which contains all the possible transcripts, confidence levels etc.
 
 ## Installation
 Using Swift Package Manager, in Xcode:
 
 #### File > Swift Packages > Add Package Dependency
-https://github.com/iOSDigital/STTLibrary.git
+https://github.com/iOSDigital/SSTLibrary.git
 
 #### Or manually
 Just drop SSTLibrary.swift into your project.
@@ -34,10 +34,12 @@ Then, once you have imported the module:
 import SSTLibrary
 ```
 
-Create a global instance of the Shared Instance:
+Init a global (or local if you prefer) instance of the class:
 
 ```swift
-let sstManager = SSTLibrary.shared
+let sstManager = SSTLibrary()
+or
+let sstManager = SSTLibrary(reportPartialResults: true)
 ```
 
 On say, a button press, start the recognizing process:
@@ -45,9 +47,12 @@ On say, a button press, start the recognizing process:
 ```swift
 sstManager.startRecognizing { (result) in
     switch result {
-        case .success(let string):
+        case .success(let sstResult):
             // This is your speech to text result!
-            print(string)
+            print(sstResult.string)
+            // The SSTResult contains the SFSpeechRecognitionResult
+            let speechResult = sstResult.speechRecognitionResult
+            let transcriptions = speechResult?.transcriptions
 
         case .failure(let error):
             // Something went wrong :(
@@ -56,7 +61,10 @@ sstManager.startRecognizing { (result) in
 }
 ```
 
-The completion block above will be called once you call stopRecognizing, say when you press another button:
+The completion block above will be called once you call stopRecognizing, say when you press another button.
+OR the completion block will be regularly called if reportPartialResults == true.
+Either way, call the stop method anyway, and a final SSTResult will be sent.
+The "sstResult" in the .success block is an SSTResult object.
 
 ```swift
 sstManager.stopRecording()
